@@ -253,7 +253,8 @@ PG_RESET_TEMPLATE(gpsConfig_t, gpsConfig,
     .gps_ublox_mode = UBLOX_AIRBORNE,
     .gps_set_home_point_once = false,
     .gps_use_3d_speed = false,
-    .sbas_integrity = false
+    .sbas_integrity = false,
+    .gps_arm_without_fix = false
 );
 
 static void shiftPacketLog(void)

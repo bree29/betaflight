@@ -561,6 +561,12 @@ void tryArm(void)
 #ifdef USE_GPS
         GPS_reset_home_position();
 
+        if (gpsConfig()->gps_arm_without_fix || STATE(GPS_FIX) || ARMING_FLAG(WAS_EVER_ARMED) || IS_RC_MODE_ACTIVE(BOXFLIPOVERAFTERCRASH)) {
+                unsetArmingDisabled(ARMING_DISABLED_GPS);
+            } else {
+                setArmingDisabled(ARMING_DISABLED_GPS);
+            }
+
         //beep to indicate arming
         if (featureIsEnabled(FEATURE_GPS)) {
             if (STATE(GPS_FIX) && gpsSol.numSat >= 5) {
